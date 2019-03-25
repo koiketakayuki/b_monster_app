@@ -6,15 +6,13 @@ import 'box_preference_settings.dart';
 class AppShell extends StatelessWidget {
   final String title;
   final Widget body;
+  final bool hasDrawer;
 
-  AppShell(this.title, this.body);
+  AppShell(this.title, this.body, {this.hasDrawer = true});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: body,
-      drawer: Drawer(
+    Widget drawer = hasDrawer ? Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
@@ -59,7 +57,12 @@ class AppShell extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      ) : null;
+
+    return Scaffold(
+      appBar: AppBar(title: Text(title)),
+      body: body,
+      drawer: drawer,
     );
   }
 }
