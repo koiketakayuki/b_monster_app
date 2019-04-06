@@ -4,9 +4,7 @@ import 'package:b_monster_app/models/studio.dart';
 import 'package:b_monster_app/api/parse_lesson_list.dart';
 import 'package:b_monster_app/api/parse_available_bag_ids.dart';
 
-
 class BMonsterAPI {
-
   static final String _baseUrl = "https://www.b-monster.jp";
 
   final http.Client _client;

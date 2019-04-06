@@ -7,7 +7,8 @@ List<Lesson> parseLessonList(String body) {
   var dom = parse(body);
   var timeTable = dom.getElementById("time-table");
   var lessonColumns = timeTable.querySelectorAll(".flex-no-wrap");
-  var dayLessons = lessonColumns.map((lessonColumn) => lessonColumn.querySelectorAll(".panel:not(.done)"));
+  var dayLessons = lessonColumns.map(
+      (lessonColumn) => lessonColumn.querySelectorAll(".panel:not(.done)"));
 
   List<Lesson> results = [];
   DateTime baseDate = DateTime.now();
@@ -28,5 +29,6 @@ Lesson parseLesson(Element dom, DateTime date) {
   var end = link.indexOf("&");
   var lessonId = link.substring(start + "lesson_id=".length, end);
 
-  return Lesson(lessonId, Performer(performerName), programName, date, timeLabel);
+  return Lesson(
+      lessonId, Performer(performerName), programName, date, timeLabel);
 }

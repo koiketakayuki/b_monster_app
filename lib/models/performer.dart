@@ -8,7 +8,7 @@ class Performer {
     return other is Performer && name == other.name;
   }
 
-  @override 
+  @override
   String toString() => "<Performer $name>";
 
   int get hashCode => name.hashCode;

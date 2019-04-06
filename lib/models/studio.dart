@@ -15,5 +15,14 @@ class Studios {
   static const Studio haneda = Studio('0007', '羽田スタジオ');
   static const Studio umeda = Studio('0008', '梅田スタジオ');
 
-  static const List<Studio> all = [ebisu, shinjuku, ginza, aoyama, sakae, ikebukuro, haneda, umeda];
+  static const List<Studio> all = [
+    ebisu,
+    shinjuku,
+    ginza,
+    aoyama,
+    sakae,
+    ikebukuro,
+    haneda,
+    umeda
+  ];
 }

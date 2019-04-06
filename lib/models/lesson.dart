@@ -7,7 +7,8 @@ class Lesson {
   final DateTime date;
   final String timeRangeLabel;
 
-  Lesson(this.id, this.performer, this.programName, this.date, this.timeRangeLabel);
+  Lesson(this.id, this.performer, this.programName, this.date,
+      this.timeRangeLabel);
 
   @override
   operator ==(dynamic other) {
@@ -16,8 +17,9 @@ class Lesson {
 
   bool isReservable() => programName != "STREAM ONLY" && programName != "無料体験会";
 
-  @override 
-  String toString() => "<Lesson($id): ${date.month}/${date.day} $timeRangeLabel $performer $programName>";
+  @override
+  String toString() =>
+      "<Lesson($id): ${date.month}/${date.day} $timeRangeLabel $performer $programName>";
 
   int get hashCode => int.parse(id);
 }

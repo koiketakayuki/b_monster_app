@@ -1,24 +1,52 @@
-// This example shows a [Scaffold] with an [AppBar], a [BottomAppBar] and a
-// [FloatingActionButton]. The [body] is a [Text] placed in a [Center] in order
-// to center the text within the [Scaffold] and the [FloatingActionButton] is
-// centered and docked within the [BottomAppBar] using
-// [FloatingActionButtonLocation.centerDocked]. The [FloatingActionButton] is
-// connected to a callback that increments a counter.
-
+import 'package:b_monster_app/blocs/lesson/lesson_bloc.dart';
+import 'package:b_monster_app/blocs/simple_bloc_delegate.dart';
+import 'package:b_monster_app/routes.dart';
+import 'package:b_monster_app/screens/account_settings_screen.dart';
+import 'package:b_monster_app/screens/box_preferences_screen.dart';
+import 'package:b_monster_app/screens/home_screen.dart';
+import 'package:b_monster_app/screens/select_date_screen.dart';
+import 'package:b_monster_app/screens/select_lesson_screen.dart';
+import 'package:b_monster_app/screens/select_studio_screen.dart';
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'pages/home.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() => runApp(BMonsterReservationApp());
+void main() {
+  BlocSupervisor().delegate = SimpleBlocDelegate();
+  runApp(BMonsterReservationApp());
+}
 
 class BMonsterReservationApp extends StatelessWidget {
+  final lessonBloc = LessonBloc();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'b-monseter 自動予約アプリ',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Home(),
-    );
+    return BlocProvider(
+        bloc: lessonBloc,
+        child: MaterialApp(
+            title: 'b-monster 自動予約アプリ',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            routes: {
+              BMonsterReservationAppRoutes.home: (context) {
+                return HomeScreen();
+              },
+              BMonsterReservationAppRoutes.accountSettings: (context) {
+                return AccountSettingsScreen();
+              },
+              BMonsterReservationAppRoutes.boxPreferences: (context) {
+                return BoxPreferencesScreen();
+              },
+              BMonsterReservationAppRoutes.selectDate: (context) {
+                return SelectDateScreen();
+              },
+              BMonsterReservationAppRoutes.selectStudio: (context) {
+                return SelectStudioScreen();
+              },
+              BMonsterReservationAppRoutes.selectLesson: (context) {
+                return SelectLessonScreen();
+              }
+            }));
   }
 }

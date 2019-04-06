@@ -1,9 +1,12 @@
+import 'package:b_monster_app/keys.dart';
+import 'package:b_monster_app/routes.dart';
 import 'package:flutter/material.dart';
 import 'app_shell.dart';
-import 'package:b_monster_app/pages/studio_list.dart';
 
-class Home extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   static final String title = 'ホーム';
+
+  HomeScreen() : super(key: BMonsterReservationAppKeys.homeScreen);
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +16,8 @@ class Home extends StatelessWidget {
             child: RaisedButton(
           child: Text('予約'),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => StudioList()),
-            );
+            Navigator.pushNamed(
+                context, BMonsterReservationAppRoutes.selectDate);
           },
         )));
   }
