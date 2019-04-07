@@ -25,11 +25,11 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
   Stream<LessonState> _mapSelectStudioToState(
       LessonState state, SelectStudioEvent event) async* {
     List<Lesson> lessons = await _api.getLessons(event.studio);
-    yield currentState..lessons = lessons;
+    yield LessonState(lessons, currentState.date);
   }
 
   Stream<LessonState> _mapSelectDateToState(
       LessonState state, SelectDateEvent event) async* {
-    yield currentState..date = event.date;
+    yield LessonState(currentState.lessons, event.date);
   }
 }

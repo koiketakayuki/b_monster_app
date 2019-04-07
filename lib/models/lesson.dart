@@ -15,7 +15,8 @@ class Lesson {
     return other is Lesson && id == other.id;
   }
 
-  bool isReservable() => programName != "STREAM ONLY" && programName != "無料体験会";
+  bool get isReservable =>
+      programName != "STREAM ONLY" && programName != "無料体験会";
 
   @override
   String toString() =>

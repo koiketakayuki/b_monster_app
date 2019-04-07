@@ -1,5 +1,7 @@
 import 'package:b_monster_app/blocs/lesson/lesson_bloc.dart';
+import 'package:b_monster_app/blocs/lesson/lesson_event.dart';
 import 'package:b_monster_app/blocs/simple_bloc_delegate.dart';
+import 'package:b_monster_app/models/studio.dart';
 import 'package:b_monster_app/routes.dart';
 import 'package:b_monster_app/screens/account_settings_screen.dart';
 import 'package:b_monster_app/screens/box_preferences_screen.dart';
@@ -39,10 +41,22 @@ class BMonsterReservationApp extends StatelessWidget {
                 return BoxPreferencesScreen();
               },
               BMonsterReservationAppRoutes.selectDate: (context) {
-                return SelectDateScreen();
+                return SelectDateScreen(
+                  onSelectDate: (date) {
+                    lessonBloc.dispatch(SelectDateEvent(date));
+                    Navigator.pushNamed(
+                        context, BMonsterReservationAppRoutes.selectStudio);
+                  },
+                );
               },
               BMonsterReservationAppRoutes.selectStudio: (context) {
-                return SelectStudioScreen();
+                return SelectStudioScreen(
+                  onSelectStudio: (Studio studio) {
+                    lessonBloc.dispatch(SelectStudioEvent(studio));
+                    Navigator.pushNamed(
+                        context, BMonsterReservationAppRoutes.selectLesson);
+                  },
+                );
               },
               BMonsterReservationAppRoutes.selectLesson: (context) {
                 return SelectLessonScreen();
